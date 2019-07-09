@@ -28,7 +28,6 @@ class NodeInfo extends React.Component {
     return (
       <DefinitionList>
         <Definition term={t('peerId')} desc={this.getField(identity, 'id')} />
-        <Definition term={t('version')} desc={<VersionLink agentVersion={this.getField(identity, 'agentVersion')} />} />
       </DefinitionList>
     )
   }

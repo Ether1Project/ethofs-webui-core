@@ -61,7 +61,6 @@ export class App extends Component {
           <div className='flex-auto-l'>
             <div className='flex items-center ph3 ph4-l' style={{ height: 75, background: '#F0F6FA', paddingTop: '20px', paddingBottom: '15px' }}>
               <div style={{ width: 560 }}>
-                <IpldExploreForm />
               </div>
               <div className='dn db-ns flex-auto tr'>
                 <Connected />

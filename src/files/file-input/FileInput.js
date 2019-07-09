@@ -116,10 +116,6 @@ class FileInput extends React.Component {
               <FolderIcon className='fill-aqua w2 mr1' />
               {t('addFolder')}
             </Option>
-            <Option onClick={this.toggleModal('byPath')}>
-              <DecentralizationIcon className='fill-aqua w2 mr1' />
-              {t('addByPath')}
-            </Option>
           </DropdownMenu>
         </Dropdown>
 
@@ -154,3 +150,96 @@ export default connect(
   'doDesktopSelectDirectory',
   translate('files')(FileInput)
 )
+/*
+//**************************************************************************************************************************
+function AddNewPin(pinToAdd, pinSize, HostingContractName, HostingContractDuration, GlobalMainHashArray, GlobalMainContentHash) {
+    var GlobalControllerContractAddress = "0xc38B47169950D8A28bC77a6Fa7467464f25ADAFc";
+    var GlobalControllerABI = JSON.parse();
+    var GlobalHostingCost = 1.0;
+    var GlobalHostingCostWei = GlobalHostingCost * 1000000000000000000;
+    var GlobalChannelString = "ethoFSPinningChannel_alpha11";
+
+    var contentHashString = GlobalChannelString;
+    var contentPathString = GlobalChannelString;
+    for (i = 0; i < GlobalMainHashArray.length; i++) {
+        contentHashString += ":" + GlobalMainHashArray[i];
+        contentPathString += ":" + GlobalMainPathArray[i];
+    }
+    var MainHashArray = GlobalMainHashArray;
+    GlobalUploadName = HostingContractName;
+
+    if (typeof web3 !== 'undefined')
+    {
+        window.web3 = new Web3(window.web3.currentProvider);
+        web3.eth.getAccounts(function(err, accounts){
+            if (err != null){
+                console.error("An error occurred: "+err);
+            }
+            else if (accounts.length == 0){
+                console.log("User is not logged in");
+            }
+            else{
+                console.log("User is logged in");
+                web3.eth.defaultAccount = accounts[0];
+                var GlobalUserAddress = accounts[0];
+
+                var contractCost = calculateCost(pinSize, HostingContractDuration, GlobalHostingCostWei);
+                var pinAddingContract = web3.eth.contract(GlobalControllerABI);
+                var pinAdding = pinAddingContract.at(GlobalControllerContractAddress);
+                const transactionObject = {
+                    from: GlobalUserAddress,
+                    value: contractCost
+                };
+                pinAdding.AddNewContract.sendTransaction(GlobalMainContentHash, HostingContractName, HostingContractDuration, pinSize, pinSize, contentHashString, contentPathString, transactionObject, function(error, result){
+                    if(!error){
+                        if(result){
+                            //$('#minedBlockTrackerModal').modal('show');
+                            waitForReceipt(result, function (receipt) {
+                            console.log("Transaction Has Been Mined: " + receipt);
+                            //$('#minedBlockTrackerModal').modal('hide');
+                            //$('#nodeModal').modal('hide');
+                            //var filesForStream = MainFileArray;
+                            //streamFilesExternally(filesForStream, MainHashArray);
+                            //checkForUploadedContentAvailability(HostingContractName);
+                            return true;
+                        });
+                    }else{
+                         console.log("There was a problem adding new contract");
+                    }
+                }else{
+                    console.error(error);
+                }
+            });
+        });
+    }
+    console.log("TX Was Not Sent Successfully - Exiting");
+    return false;
+}
+
+function waitForReceipt(hash, cb) {
+    web3.eth.getTransactionReceipt(hash, function (err, receipt) {
+        //document.getElementById("mining-status-message").textContent="In Progress";
+        //$miningMessage.innerText = "Waiting For Transaction Confirmation";
+        web3.eth.getBlock('latest', function (e, res) {
+            if(!e){
+                //document.getElementById("block-height").textContent=res.number;
+            }
+        });
+        if (err) {
+            error(err);
+            //$miningMessage.innerText = "Error Conneting To Ether-1 Network";
+        }
+        if (receipt !== null) {
+            //$miningMessage.innerText = "Transaction Confirmed";
+            //document.getElementById("mining-status-message").textContent="Complete";
+            if (cb) {
+                cb(receipt);
+            }
+        } else {
+            window.setTimeout(function () {
+                waitForReceipt(hash, cb);
+            }, 10000);
+        }
+    });
+}
+*/

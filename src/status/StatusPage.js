@@ -16,7 +16,7 @@ const StatusPage = ({ t, nodeBandwidthEnabled, ipfsConnected, analyticsAskToEnab
   return (
     <div data-id='StatusPage' className='mw9 center'>
       <Helmet>
-        <title>{t('title')} - IPFS</title>
+        <title>{t('title')} - ethoFS</title>
       </Helmet>
       <Box>
         <div className='flex'>
@@ -35,19 +35,6 @@ const StatusPage = ({ t, nodeBandwidthEnabled, ipfsConnected, analyticsAskToEnab
           </div>
         </div>
       </Box>
-      { ipfsConnected && analyticsAskToEnable
-        ? <AskToEnable
-          className='mt3'
-          label={t('AskToEnable.label')}
-          yesLabel={t('AskToEnable.yesLabel')}
-          noLabel={t('AskToEnable.noLabel')}
-          detailsLabel={t('AskToEnable.detailsLabel')}
-          detailsLink='#/settings/analytics'
-          onYes={doEnableAnalytics}
-          onNo={doDisableAnalytics}
-        />
-        : null
-      }
       <div style={{ opacity: ipfsConnected ? 1 : 0.4 }}>
         { nodeBandwidthEnabled
           ? <Box className='mt3 pa3'>
