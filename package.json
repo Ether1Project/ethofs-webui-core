@@ -92,7 +92,7 @@
     "big.js": "^5.1.2",
     "bundlesize": "^0.17.0",
     "cross-env": "^5.2.0",
-    "ecstatic": "^3.3.0",
+    "ecstatic": "^4.1.4",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.4.0",
     "eslint-config-standard": "^12.0.0",
